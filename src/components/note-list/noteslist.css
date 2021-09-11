@@ -1,0 +1,15 @@
+.notes {
+  max-width: 950px;
+  margin: 30px auto auto auto;
+}
+
+.row {
+  flex-direction: row;
+  max-width: 600px;
+}
+
+.grid {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,16 @@
+.form-field {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-family: 20px;
+  padding: 2px 0;
+}
+
+.text-area-field {
+  min-height: 45px;
+}
+
+.form-field:empty::before {
+  content:attr(data-placeholder);
+  color:gray;
+}

@@ -1,0 +1,9 @@
+.taglist {
+  height: calc(100% - 65px);
+  width: 280px;
+  position: fixed;
+  padding: 1rem;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, .2);
+}

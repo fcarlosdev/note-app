@@ -1,0 +1,79 @@
+.nt-menu {
+    display: none;
+    position: absolute;
+    min-height: auto;
+    min-width: 150px;
+    border-radius: 4px;
+    background-color:white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+    cursor: pointer;
+    list-style-type:none;
+}
+
+.nt-menu__item {
+    padding: 10px;
+}
+
+.nt-menu__item:hover {
+    background-color: #ccc;
+}
+
+.tag-menu {
+    display: none;
+    position: absolute;
+    top: -5px;
+    max-width: 180px;
+    min-width: 50px;
+    min-height: auto;
+    border-radius: 4px;
+    background-color:white;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tg-top {
+    padding-top: .8rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.tg-top > h5 {
+    padding: 0 .6rem;
+    margin-bottom: 10px;
+}
+
+.tg-top input {
+    padding: .5rem .6rem;
+    border: none;
+    outline: none;
+}
+
+.tg-available {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tg-item:first-child,
+.tg-item:last-child {
+    padding-top: .8rem;
+}
+
+.tg-item {
+    padding: .4rem .6rem;
+    display: flex;
+    align-items: center;
+}
+
+.tg-item:hover {
+    cursor: pointer;
+    background-color: #f3f2f2;
+}
+
+.checkmark {
+    margin-top: 2px;
+    margin-right: 3px;
+}
+
+
