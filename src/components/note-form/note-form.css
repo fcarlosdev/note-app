@@ -19,3 +19,20 @@
   display: none;
   margin-bottom: 15px;
 }
+
+.note-footer {
+  height: 30px;
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.close-note {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.close-note:hover {
+  background-color: #ccc;
+}

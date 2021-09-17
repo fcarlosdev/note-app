@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 
 import { isAllFieldsEmpty } from "../../helpers/lib";
@@ -11,19 +11,23 @@ import "./note-form.css";
 function NoteForm(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const footRef = useRef(null);
 
   const handleClick = (event) => {
-    let titleR = document.querySelector(".note-title");
-    let contentR = document.querySelector(".note-content");
 
-    if (nodeRef.current.contains(event.target)) {
-      titleR.style.display = "block";
-      contentR.classList.add("text-area-field");
-    } else if (isAllFieldsEmpty([titleR, contentR])) {
-      formResize(titleR, contentR)
+    if (footRef.current.children[0] === event.target) {
+      formResize();
+    } else if (nodeRef.current.contains(event.target)) {
+      titleRef.current.style.display = "block";
+      contentRef.current.classList.add("text-area-field");
+      footRef.current.style.display = "flex";
+    } else if (isAllFieldsEmpty([titleRef.current, contentRef.current])) {
+      formResize()
     }
 
-    addNote(event.target, titleR, contentR);
+    addNote(event.target, titleRef.current, contentRef.current);
   };
 
   const { nodeRef } = useDetectClickOut(handleClick);
@@ -44,14 +48,15 @@ function NoteForm(props) {
         setContent("");
         titleR.innerHTML = ""
         contentR.innerHTML ="" 
-        formResize(titleR, contentR)
+        formResize()
       }
     }
   };
 
-  const formResize = (titleR, contentR) => {
-      titleR.style.display = "none";
-      contentR.classList.remove("text-area-field");
+  const formResize = () => {
+      titleRef.current.style.display = "none";
+      contentRef.current.classList.remove("text-area-field")
+      footRef.current.style.display = "none";
   }
 
   return (
@@ -61,13 +66,20 @@ function NoteForm(props) {
         className={"note-title"}
         onChange={setTitle}
         placeholder={"Title"}
+        refer={titleRef}
       />
       <FormField
         value={content}
         className={"note-content"}
         onChange={setContent}
         placeholder={"Take a note..."}
+        refer={contentRef}
       />
+      <div className="note-footer" ref={footRef}>
+        <div className="close-note" onClick={() => {
+          formResize();
+        }}>Close</div>
+      </div>
     </div>
   );
 }

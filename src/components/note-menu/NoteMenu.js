@@ -14,6 +14,7 @@ function NoteMenu(props) {
     innerRef,
     dispatch,
     tags,
+    setLabels,
   } = props;
 
   const deleteNote = (id) => {
@@ -27,6 +28,10 @@ function NoteMenu(props) {
     setShowMenuOptions("none");
   };
 
+  const selLabel = (e) => {
+    setLabels(e.target.value)
+  };
+
   const showSelectTagList = () => {
     return (
       <div className="tag-menu" ref={nodeRef}>
@@ -37,7 +42,12 @@ function NoteMenu(props) {
         <div className="tg-available">
           {tags.map((t) => (
             <label key={t} className="tg-item">
-              <input type="checkbox" className="checkmark tg-check" />
+              <input
+                type="checkbox"
+                value={t}
+                className="checkmark tg-check"
+                onClick={(e) => selLabel(e)}
+              />
               {t}
             </label>
           ))}
@@ -60,11 +70,13 @@ function NoteMenu(props) {
   };
 
   const handleClickMenu = (event) => {
-    if (!Array.from(event.target.classList).some(c => c.startsWith("tg")) && nodeRef.current) {
-        nodeRef.current.style.display = "none";
-        setShowMenuOptions("block");
+    if (
+      !Array.from(event.target.classList).some((c) => c.startsWith("tg")) &&
+      nodeRef.current
+    ) {
+      nodeRef.current.style.display = "none";
+      setShowMenuOptions("block");
     }
-
   };
 
   const { nodeRef } = useDetectClickOut(handleClickMenu);

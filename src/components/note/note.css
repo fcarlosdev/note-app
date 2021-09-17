@@ -84,3 +84,7 @@ img {
     width: 100%;
     box-sizing: border-box;
 }
+
+.nt-lb-item {
+    margin-right: 10px;
+}

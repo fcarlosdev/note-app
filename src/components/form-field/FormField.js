@@ -3,6 +3,7 @@ import "./form-field.css";
 
 const FormField = (props) => {
   const defaultValue = useRef(props.value);
+  const fieldRef = (props.refer !== undefined) ? props.refer : null;
 
   const handleInput = (event) => {
     if (props.onChange) {
@@ -21,6 +22,7 @@ const FormField = (props) => {
       onInput={handleInput}
       data-placeholder={props.placeholder || ""}
       dangerouslySetInnerHTML={{ __html: defaultValue.current }}
+      ref={fieldRef}
     />
   );
 };
